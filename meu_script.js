@@ -1,4 +1,4 @@
-function define_contact_location(){
+function get_contact_location(){
   var all_contact_occurrences = document.querySelectorAll(`[title="${contact}"]`)
   var contact_in_list, contact_in_chat
 
@@ -18,7 +18,7 @@ function define_contact_location(){
 function send_message() {
   setTimeout(function(){
     console.log("inicio: send")
-    let {contact_in_list, contact_in_chat} = define_contact_location()
+    let {contact_in_list, contact_in_chat} = get_contact_location()
     simulateMouseEvents(contact_in_list, 'mousedown');
 
     setTimeout(function(){
