@@ -38,12 +38,18 @@ function simulateMouseEvents(element, eventName) {
 
 send_message()
 
-let {contact_in_list, contact_in_chat} = define_contact_location();
-
-let status = contact_in_chat.querySelector('[class$="selectable-text copyable-text"]');
-
-if (status == null) {
-  console.log('indeterminado')
-} else {
-  console.log(status.title)
+function getStatus() {
+  let {contact_in_list, contact_in_chat} = get_contact_location();
+  let statusElement = contact_in_chat.querySelector('[class$="selectable-text copyable-text"]');
+  var status
+  if (statusElement == null) {
+    status = 'undefined'
+  } else if (statusElement.title == 'online') {
+    status = 'online'
+  } else {
+    status = 'offline'
+  }
+  return status
 }
+
+getStatus()
