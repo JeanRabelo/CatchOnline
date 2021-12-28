@@ -1,4 +1,4 @@
-function get_contact_locations(){
+function get_contact_locations(contact){
   var all_contact_occurrences = document.querySelectorAll(`[title="${contact}"]`)
   var contact_in_list, contact_in_chat
 
@@ -15,31 +15,19 @@ function get_contact_locations(){
     };
 }
 
-function send_message() {
-  setTimeout(function(){
-    console.log("inicio: send")
-    var contact = 'Side';
-    let {contact_in_list, contact_in_chat} = get_contact_locations()
-    simulateMouseEvents(contact_in_list, 'mousedown');
-
-    setTimeout(function(){
-      var send = document.querySelector('[data-icon="send"]');
-      send.click();
-      console.log("fim: send");
-    }, 1000);//wait 1 second
-  }, 20000);//wait 20 seconds
-}
-
 function simulateMouseEvents(element, eventName) {
   var mouseEvent = document.createEvent ('MouseEvents');
   mouseEvent.initEvent (eventName, true, true);
   element.dispatchEvent (mouseEvent);
 }
 
-send_message()
+function clickOnContact(contact){
+  let {contact_in_list, contact_in_chat} = get_contact_locations(contact);
+  simulateMouseEvents(contact_in_list, 'mousedown');
+}
 
-function getStatus() {
-  let {contact_in_list, contact_in_chat} = get_contact_locations();
+function getStatus(contact) {
+  let {contact_in_list, contact_in_chat} = get_contact_locations(contact);
   let statusElement = contact_in_chat.querySelector('[class$="selectable-text copyable-text"]');
   var status
   if (statusElement == null) {
@@ -52,4 +40,21 @@ function getStatus() {
   return status
 }
 
-getStatus()
+function send_message() {
+  var send = document.querySelector('[data-icon="send"]');
+  send.click();
+}
+
+setTimeout(function(){
+  var contact = 'Side';
+  clickOnContact(contact)
+  setTimeout(function(){
+    var status = getStatus(contact)
+
+    if (status == 'online') {
+      send_message()
+    } else {
+      console.log('Ainda não está online')
+    }
+  }, 2000);//wait 2 seconds
+}, 20000);//wait 20 seconds
