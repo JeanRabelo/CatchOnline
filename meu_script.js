@@ -1,4 +1,4 @@
-function get_contact_location(){
+function get_contact_locations(){
   var all_contact_occurrences = document.querySelectorAll(`[title="${contact}"]`)
   var contact_in_list, contact_in_chat
 
@@ -19,7 +19,7 @@ function send_message() {
   setTimeout(function(){
     console.log("inicio: send")
     var contact = 'Side';
-    let {contact_in_list, contact_in_chat} = get_contact_location()
+    let {contact_in_list, contact_in_chat} = get_contact_locations()
     simulateMouseEvents(contact_in_list, 'mousedown');
 
     setTimeout(function(){
@@ -39,7 +39,7 @@ function simulateMouseEvents(element, eventName) {
 send_message()
 
 function getStatus() {
-  let {contact_in_list, contact_in_chat} = get_contact_location();
+  let {contact_in_list, contact_in_chat} = get_contact_locations();
   let statusElement = contact_in_chat.querySelector('[class$="selectable-text copyable-text"]');
   var status
   if (statusElement == null) {
