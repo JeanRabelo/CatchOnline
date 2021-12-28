@@ -18,6 +18,7 @@ function get_contact_location(){
 function send_message() {
   setTimeout(function(){
     console.log("inicio: send")
+    var contact = 'Side';
     let {contact_in_list, contact_in_chat} = get_contact_location()
     simulateMouseEvents(contact_in_list, 'mousedown');
 
@@ -35,7 +36,6 @@ function simulateMouseEvents(element, eventName) {
   element.dispatchEvent (mouseEvent);
 }
 
-var contact = 'Side';
 send_message()
 
 let {contact_in_list, contact_in_chat} = define_contact_location();
