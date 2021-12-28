@@ -35,5 +35,15 @@ function simulateMouseEvents(element, eventName) {
   element.dispatchEvent (mouseEvent);
 }
 
-var contact = 'Side'
+var contact = 'Side';
 send_message()
+
+let {contact_in_list, contact_in_chat} = define_contact_location();
+
+let status = contact_in_chat.querySelector('[class$="selectable-text copyable-text"]');
+
+if (status == null) {
+  console.log('indeterminado')
+} else {
+  console.log(status.title)
+}
