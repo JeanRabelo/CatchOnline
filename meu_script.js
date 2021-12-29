@@ -85,3 +85,12 @@ function removeWait(){
   var statusLocation = getStatusLocationCurrent()
   statusLocation.removeEventListener('DOMSubtreeModified', sendMessageWhenOnline)
 }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     var button = document.getElementById('trigger');
+//     // onClick's logic below:
+//     button.addEventListener('click', function() {
+//         // waitToSendCurrent();
+//         console.log('o mínimo tá sendo feito')
+//     });
+// });
