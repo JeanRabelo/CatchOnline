@@ -50,6 +50,25 @@ setTimeout(function(){
   clickOnContact(contact)
   setTimeout(function(){
     var status = getStatus(contact)
+function getStatusCurrent(){
+  var allPossibleChatContacts = document.querySelector('div[role="button"] > div > div > span[title][dir]:not([class$=" selectable-text copyable-text"])').parentElement.parentElement.parentElement.querySelector('span[class$=" selectable-text copyable-text"]')
+  return allPossibleChatContacts
+}
+
+function waitToSendCurrent(){
+  var status = getStatusCurrent()
+  if (status.title == 'online'){
+    send_message();
+  } else {
+    status.addEventListener('DOMSubtreeModified', a=>{
+      setTimeout(function(){
+        if (status.title == 'online' || status.title.substr(-3) == '...') {
+          send_message();
+        }
+      }, 1000)
+    })
+  }
+}
 
     if (status == 'online') {
       send_message()
