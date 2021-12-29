@@ -66,17 +66,12 @@ function sendMessageWhenOnline(){
 
 function getStatusLocationCurrent(){
   var statusLocation = document.querySelector('div[role="button"] > div > div > span[title][dir]:not([class$=" selectable-text copyable-text"])').parentElement.parentElement.parentElement
-  // .querySelector('span[class$=" selectable-text copyable-text"]')
-  // console.log(statusLocation)
   return statusLocation
 }
 
 function waitToSendCurrent(){
-  console.log(1)
   var statusLocation = getStatusLocationCurrent()
-  console.log(2)
   var status = statusLocation.querySelector('span[class$=" selectable-text copyable-text"]')
-  console.log(3)
   if (status != null) {
     if (status.title == 'online'){
       sendmessage()
