@@ -1,3 +1,13 @@
+console.log('content_script.js');
+
+chrome.runtime.onMessage.addListener(gotMessage);
+
+function gotMessage(message, sender, sendResponse){
+  console.log(1)
+  handleTriggerButton();
+  console.log(message.txt);
+}
+
 function sendmessage(){
   var send = document.querySelector('[data-icon="send"]');
   if (send == null) {console.log("There's no message to send"); return}

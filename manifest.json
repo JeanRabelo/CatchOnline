@@ -1,19 +1,15 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "WppCatchOnline",
   "version": "1.0",
   "content_scripts": [{
     "matches": ["https://web.whatsapp.com/*"],
-    "js": ["meu_script.js"]
+    "js": ["content_script.js"]
     }],
-  "action": {
-    "default_popup": "popup.html"
+  "browser_action": {
+    "default_icon": "hook.png"
   },
-  "permissions": [
-    "tabs", "scripting"
-  ],
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
-]
+  "background":{
+    "scripts":["background.js"]
+  }
 }
