@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "WppCatchOnline",
   "version": "1.0",
   "content_scripts": [{
@@ -7,10 +7,10 @@
     "css":["content.css"],
     "js": ["content_script.js"]
     }],
-  "browser_action": {
+  "action": {
     "default_icon": "hook.png"
   },
   "background":{
-    "scripts":["background.js"]
+    "service_worker": "background.js"
   }
 }
