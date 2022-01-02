@@ -10,8 +10,7 @@ function sendmessage(){
 
 function sendMessageWhenOnline(){
   var statusLocation = getStatusLocationCurrent();
-  var status = statusLocation.querySelector('span[class$=" selectable-text copyable-text"]')
-
+  var status = statusLocation.querySelector('span[class$=" selectable-text copyable-text"]');
   if (status != null){
     setTimeout(function (){
       if (status.title == 'online' || status.title.substr(-3) == '...') {
@@ -38,23 +37,20 @@ function waitToSendCurrent(statusLocation){
   if (!statusLocation.hasAttribute('beingListened')){
     var attBeingListened = document.createAttribute('beingListened'); //room for improvement
     statusLocation.setAttributeNode(attBeingListened); //room for improvement
-    statusLocation.addEventListener('DOMSubtreeModified', sendMessageWhenOnline)
+    statusLocation.addEventListener('DOMSubtreeModified', sendMessageWhenOnline);
   }
 }
 
 function handleTriggerButton(){
-
   var statusLocation = getStatusLocationCurrent();
   if (!statusLocation.hasAttribute('beingListened')){
-
     waitToSendCurrent(statusLocation);
     return
   }
-
-  removeWait(statusLocation)
+  removeWait(statusLocation);
 }
 
 function removeWait(statusLocation){
-  statusLocation.removeEventListener('DOMSubtreeModified', sendMessageWhenOnline)
-  statusLocation.removeAttribute('beingListened')
+  statusLocation.removeEventListener('DOMSubtreeModified', sendMessageWhenOnline);
+  statusLocation.removeAttribute('beingListened');
 }
