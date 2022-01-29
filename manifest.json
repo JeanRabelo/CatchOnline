@@ -1,20 +1,24 @@
 {
-  "manifest_version": 3,
-  "name": "CatchOnline",
-  "version": "1.0",
-  "content_scripts": [{
-    "matches": ["https://web.whatsapp.com/*"],
-    "css":["content.css"],
-    "js": ["content_script.js"]
-    }],
-  "action": {
-    "default_icon": {
-      "32": "images/icon32.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
+    "manifest_version": 3,
+    "name": "CatchOnline",
+    "version": "1.0",
+    "content_scripts": [{
+            "matches": ["https://web.whatsapp.com/*"],
+            "css": ["content.css"],
+            "js": ["content_script.js"]
+        }
+    ],
+    "action": {
+        "default_icon": {
+            "32": "images/icon32.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        }
+    },
+    "icons": {
+        "48": "images/icon48.png"
+    },
+    "background": {
+        "service_worker": "background.js"
     }
-  },
-  "background":{
-    "service_worker": "background.js"
-  }
 }
