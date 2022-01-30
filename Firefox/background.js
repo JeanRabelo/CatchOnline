@@ -1,4 +1,4 @@
-chrome.action.onClicked.addListener(tab => {buttonClicked(tab)});
+chrome.browserAction.onClicked.addListener(tab => {buttonClicked(tab)});
 
 function buttonClicked(tab){
   let msg = {

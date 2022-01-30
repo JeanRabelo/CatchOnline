@@ -1,5 +1,5 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
     "name": "CatchOnline",
     "version": "1.0",
     "content_scripts": [{
@@ -8,7 +8,7 @@
             "js": ["content_script.js"]
         }
     ],
-    "action": {
+    "browser_action": {
         "default_icon": {
             "32": "images/icon32.png",
             "48": "images/icon48.png",
@@ -19,6 +19,6 @@
         "48": "images/icon48.png"
     },
     "background": {
-        "service_worker": "background.js"
+        "scripts": ["background.js"]
     }
 }
