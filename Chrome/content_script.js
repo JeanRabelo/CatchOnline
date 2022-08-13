@@ -1,6 +1,9 @@
 chrome.runtime.onMessage.addListener(handleTriggerButton);
 
-// function gotMessage(message, sender, sendResponse){();}
+function getStatusLocationCurrent(){
+  var statusLocation = document.querySelector('div[role="button"] > div > div > span[title][dir]:not([class$=" selectable-text copyable-text"])').parentElement.parentElement.parentElement;
+  return statusLocation
+}
 
 function sendmessage(){
   var send = document.querySelector('[data-icon="send"]');
@@ -21,11 +24,6 @@ function sendMessageWhenOnline(){
   }
 }
 
-function getStatusLocationCurrent(){
-  var statusLocation = document.querySelector('div[role="button"] > div > div > span[title][dir]:not([class$=" selectable-text copyable-text"])').parentElement.parentElement.parentElement;
-  return statusLocation
-}
-
 function waitToSendCurrent(statusLocation){
   var status = statusLocation.querySelector('span[class$=" selectable-text copyable-text"]');
   if (status != null) {
@@ -35,8 +33,8 @@ function waitToSendCurrent(statusLocation){
     }
   }
   if (!statusLocation.hasAttribute('beingListened')){
-    var attBeingListened = document.createAttribute('beingListened'); //room for improvement
-    statusLocation.setAttributeNode(attBeingListened); //room for improvement
+    var attBeingListened = document.createAttribute('beingListened');
+    statusLocation.setAttributeNode(attBeingListened);
     statusLocation.addEventListener('DOMSubtreeModified', sendMessageWhenOnline);
   }
 }
