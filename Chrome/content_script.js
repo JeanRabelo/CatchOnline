@@ -35,7 +35,9 @@ function waitToSendCurrent(statusLocation){
   if (!statusLocation.hasAttribute('beingListened')){
     var attBeingListened = document.createAttribute('beingListened');
     statusLocation.setAttributeNode(attBeingListened);
-    statusLocation.addEventListener('DOMSubtreeModified', sendMessageWhenOnline);
+    observer = new MutationObserver(sendMessageWhenOnline);
+    var config = { attributes: true, childList: true, characterData: true, subtree:true };
+    observer.observe(statusLocation, config);
   }
 }
 
@@ -49,6 +51,7 @@ function handleTriggerButton(){
 }
 
 function removeWait(statusLocation){
-  statusLocation.removeEventListener('DOMSubtreeModified', sendMessageWhenOnline);
+  observer.disconnect();
+  delete observer;
   statusLocation.removeAttribute('beingListened');
 }
